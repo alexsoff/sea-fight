@@ -2,12 +2,12 @@ var AppRouter = Backbone.Router.extend({
   routes: {
     "":           "initApp",
     "generate":   "generatePosition",
+    "start":      "startGame",
   },
 
   initApp: function() {
     window.appData = {};
     window.appData.currentView = new InitPage();
-    window.appData.currentView.render();
   },
 
   generatePosition: function() {
@@ -15,8 +15,18 @@ var AppRouter = Backbone.Router.extend({
       window.appRouter.navigate("", {trigger: true});
       return;
     }
-    window.appData.currentView = new GenaratePage();
-    window.appData.currentView.render();
+    window.appData.position = new Position();
+    window.appData.currentView = new GenaratePage({model: window.appData.position});
+  },
+
+  startGame: function() {
+    if(_.isEmpty(window.appData)) {
+      window.appRouter.navigate("", {trigger: true});
+      return;
+    }
+
+    // заглушка
+    window.appRouter.navigate("", {trigger: true});
   }
 
 });

@@ -5,10 +5,14 @@ var InitPage = Backbone.View.extend({
     "click #btn-generate":          "generate"
   },
 
+  initialize: function() {
+    this.render();
+  },
+
   render: function() {
     var tpl = JST(this.template);
     this.$el.html(tpl({}));
-    $(".game-place").html();
+    $(".game-place").html("");
   },
 
   generate: function() {

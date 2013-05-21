@@ -24,12 +24,45 @@ var GameCel = Backbone.Model.extend({
 // Сетка игрового поля 100 элементов.
 var GameCelCollection = Backbone.Collection.extend({
   model: GameCel,
+
   initialize: function() {
     var self = this;
-    _.each([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], function(y) {
-      _.each([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], function(x) {
+    for(var y=0; y<10; y++) {
+      for(var x=0; x<10; x++) {
         self.add({id: (x+"x"+y)}, {silent: true});
+      }
+    }
+  },
+
+  validation: function(newShip) {
+    var cels = newShip.get("celArray");
+    var tmpCel;
+    for(var i=0; i<cels.length; i++) {
+      tmpCel = this.get(cels[i]);
+      if(_.isEmpty(tmpCel)) return false;
+      if(tmpCel.get("useStatus")!=="free") return false;
+    }
+    return true;
+  },
+
+  placing: function(newShip) {
+    var cels = newShip.get("celArray");
+    var tmpCel, x, y, tmp1Cel, lst, ids;
+    var self = this;
+    for(var i=0; i<cels.length; i++) {
+      tmpCel = this.get(cels[i]);
+      tmpCel.set({useStatus: "use"});
+      lst = cels[i].split("x");
+      x = lst[0]*1;
+      y = lst[1]*1;
+      ids = _.map([[0,-1], [1,-1], [1,0], [1,1], [0,1], [-1,-1], [-1,0], [-1,1]], function(delta) {return ((x+delta[0])+"x"+(y+delta[1]));})
+      _.each(ids, function(id) {
+        tmp1Cel = self.get(id);
+        if( !_.isEmpty(tmp1Cel) && tmp1Cel.get("useStatus")==="free" ) {
+          tmp1Cel.set({useStatus: "locked"});
+        }
       });
-    });
+    }
+    return true;
   }
 });

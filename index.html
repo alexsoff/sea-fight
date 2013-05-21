@@ -14,8 +14,11 @@
 
     <script src="app/models/game_cel.js" type="text/javascript"></script>
     <script src="app/models/ship.js" type="text/javascript"></script>
+    <script src="app/models/game_place.js" type="text/javascript"></script>
+    <script src="app/models/position.js" type="text/javascript"></script>
 
     <script src="app/templates.js" type="text/javascript"></script>
+    <script src="app/views/game_place_witget.js" type="text/javascript"></script>
     <script src="app/views/init_page.js" type="text/javascript"></script>
     <script src="app/views/generate_page.js" type="text/javascript"></script>
 
@@ -59,6 +62,34 @@
         <div class="bar" style="width: {{percentEnemy}}%;"></div>
       </div>
     </div>
+    <button class="btn btn-primary" type="button" id="btn-start" style="display: none;">Начать игру »</button>
+  </script>
+
+  <script id="game-place-jst" type="text/x-handlebars-template">
+  <table class="game-grid">
+    <tbody>
+      <tr><td id="{{pref}}0x0" /><td id="{{pref}}1x0" /><td id="{{pref}}2x0" /><td id="{{pref}}3x0" /><td id="{{pref}}4x0" />
+        <td id="{{pref}}5x0" /><td id="{{pref}}6x0" /><td id="{{pref}}7x0" /><td id="{{pref}}8x0" /><td id="{{pref}}9x0" /></tr>
+      <tr><td id="{{pref}}0x1" /><td id="{{pref}}1x1" /><td id="{{pref}}2x1" /><td id="{{pref}}3x1" /><td id="{{pref}}4x1" />
+        <td id="{{pref}}5x1" /><td id="{{pref}}6x1" /><td id="{{pref}}7x1" /><td id="{{pref}}8x1" /><td id="{{pref}}9x1" /></tr>
+      <tr><td id="{{pref}}0x2" /><td id="{{pref}}1x2" /><td id="{{pref}}2x2" /><td id="{{pref}}3x2" /><td id="{{pref}}4x2" />
+        <td id="{{pref}}5x2" /><td id="{{pref}}6x2" /><td id="{{pref}}7x2" /><td id="{{pref}}8x2" /><td id="{{pref}}9x2" /></tr>
+      <tr><td id="{{pref}}0x3" /><td id="{{pref}}1x3" /><td id="{{pref}}2x3" /><td id="{{pref}}3x3" /><td id="{{pref}}4x3" />
+        <td id="{{pref}}5x3" /><td id="{{pref}}6x3" /><td id="{{pref}}7x3" /><td id="{{pref}}8x3" /><td id="{{pref}}9x3" /></tr>
+      <tr><td id="{{pref}}0x4" /><td id="{{pref}}1x4" /><td id="{{pref}}2x4" /><td id="{{pref}}3x4" /><td id="{{pref}}4x4" />
+        <td id="{{pref}}5x4" /><td id="{{pref}}6x4" /><td id="{{pref}}7x4" /><td id="{{pref}}8x4" /><td id="{{pref}}9x4" /></tr>
+      <tr><td id="{{pref}}0x5" /><td id="{{pref}}1x5" /><td id="{{pref}}2x5" /><td id="{{pref}}3x5" /><td id="{{pref}}4x5" />
+        <td id="{{pref}}5x5" /><td id="{{pref}}6x5" /><td id="{{pref}}7x5" /><td id="{{pref}}8x5" /><td id="{{pref}}9x5" /></tr>
+      <tr><td id="{{pref}}0x6" /><td id="{{pref}}1x6" /><td id="{{pref}}2x6" /><td id="{{pref}}3x6" /><td id="{{pref}}4x6" />
+        <td id="{{pref}}5x6" /><td id="{{pref}}6x6" /><td id="{{pref}}7x6" /><td id="{{pref}}8x6" /><td id="{{pref}}9x6" /></tr>
+      <tr><td id="{{pref}}0x7" /><td id="{{pref}}1x7" /><td id="{{pref}}2x7" /><td id="{{pref}}3x7" /><td id="{{pref}}4x7" />
+        <td id="{{pref}}5x7" /><td id="{{pref}}6x7" /><td id="{{pref}}7x7" /><td id="{{pref}}8x7" /><td id="{{pref}}9x7" /></tr>
+      <tr><td id="{{pref}}0x8" /><td id="{{pref}}1x8" /><td id="{{pref}}2x8" /><td id="{{pref}}3x8" /><td id="{{pref}}4x8" />
+        <td id="{{pref}}5x8" /><td id="{{pref}}6x8" /><td id="{{pref}}7x8" /><td id="{{pref}}8x8" /><td id="{{pref}}9x8" /></tr>
+      <tr><td id="{{pref}}0x9" /><td id="{{pref}}1x9" /><td id="{{pref}}2x9" /><td id="{{pref}}3x9" /><td id="{{pref}}4x9" />
+        <td id="{{pref}}5x9" /><td id="{{pref}}6x9" /><td id="{{pref}}7x9" /><td id="{{pref}}8x9" /><td id="{{pref}}9x9" /></tr>
+    </tbody>
+  </table>
   </script>
 
 </html>

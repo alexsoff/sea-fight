@@ -1,4 +1,24 @@
+.hero-unit {
+  height: 160px;
+  padding:  10px 60px 30px 60px;
+}
+
 .game-place {
   height: 460px;
   background-image: url(../images/water.jpg);
+}
+
+.game-grid td {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border: 1px solid #0000CF;
+}
+
+.game-grid td.ship-normal {
+  background-color: #00FF00;
+}
+
+.clicable {
+  cursor: pointer;
 }
