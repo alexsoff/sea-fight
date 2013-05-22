@@ -1,3 +1,5 @@
+// Страница режима игры
+
 var GamePage = Backbone.View.extend({
   el: "#header-container",
   template: "game-page-jst",

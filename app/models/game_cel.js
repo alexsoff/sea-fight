@@ -34,6 +34,7 @@ var GameCelCollection = Backbone.Collection.extend({
     }
   },
 
+  // Доступна ли клетка для размещения корабля
   validation: function(newShip) {
     var cels = newShip.get("celArray");
     var tmpCel;
@@ -45,6 +46,7 @@ var GameCelCollection = Backbone.Collection.extend({
     return true;
   },
 
+  // Размещение корабля (и пометка недоступных клеток)
   placing: function(newShip) {
     var cels = newShip.get("celArray");
     var tmpCel, x, y, tmp1Cel, lst, ids;
@@ -66,6 +68,7 @@ var GameCelCollection = Backbone.Collection.extend({
     return true;
   },
 
+  // Пометка клеток, в которых точно не может быть корабля (при поиске)
   lockPosition: function(celId) {
     var self = this;
     var lst = celId.split("x");

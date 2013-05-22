@@ -5,10 +5,10 @@ var Position = Backbone.Model.extend({
     this.placeSelf  = new GamePlace({isSelf: true});
     this.placeEnemy = new GamePlace({isSelf: false});
     this.currentMove = new Move();
-    this.histiry = new MoveCollection();
     this.started = false;
   },
 
+  // Создание позиции
   generate: function(countAttemps) {
     var isGenSelf = false, isGenEnemy = false;
     for(var i=0; i<countAttemps; i++) {
@@ -32,6 +32,7 @@ var Position = Backbone.Model.extend({
     }
   },
 
+  // Начало игры
   start: function() {
     var isSelf = _.random(0,1);
     this.started = true;
@@ -42,10 +43,12 @@ var Position = Backbone.Model.extend({
     }
   },
 
+  // Ход игрока
   selfMove: function() {
     this.currentMove.set({isSelf: true});
   },
 
+  // Ход компьютера
   enemyMove: function() {
     var celId, cel;
     for(var i=0; i<10000; i++) {
@@ -72,6 +75,7 @@ var Position = Backbone.Model.extend({
     }
   },
 
+  // Игорк выбрал клетку для хода
   userClick: function(celId) {
       var cel = this.placeEnemy.cels.get(celId);
       if(cel.get("findStatus")==="undefined") {

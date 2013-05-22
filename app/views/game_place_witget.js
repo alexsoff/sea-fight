@@ -1,3 +1,5 @@
+// Элемент "игорвое поле"
+
 var GamePlaceWitget = Backbone.View.extend({
   template: "game-place-jst",
 

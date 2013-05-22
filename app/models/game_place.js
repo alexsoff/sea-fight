@@ -35,6 +35,7 @@ var GamePlace = Backbone.Model.extend({
     return true;
   },
 
+  // Проверка, убит ли корабль полностью
   verifyShip: function(celId) {
     var self = this;
     var cel = this.cels.get(celId);

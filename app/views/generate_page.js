@@ -1,3 +1,5 @@
+// Страница создания позиции
+
 var GenaratePage = Backbone.View.extend({
   el: "#header-container",
   template: "generate-page-jst",

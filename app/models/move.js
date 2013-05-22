@@ -8,8 +8,3 @@ var Move = Backbone.Model.extend({
     }
 });
 
-// История игры
-var MoveCollection = Backbone.Collection.extend({
-  model: Move
-});
-
