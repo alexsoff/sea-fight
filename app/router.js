@@ -24,9 +24,7 @@ var AppRouter = Backbone.Router.extend({
       window.appRouter.navigate("", {trigger: true});
       return;
     }
-
-    // заглушка
-    window.appRouter.navigate("", {trigger: true});
+    window.appData.currentView = new GamePage({model: window.appData.position});
   }
 
 });

@@ -15,12 +15,14 @@
     <script src="app/models/game_cel.js" type="text/javascript"></script>
     <script src="app/models/ship.js" type="text/javascript"></script>
     <script src="app/models/game_place.js" type="text/javascript"></script>
+    <script src="app/models/move.js" type="text/javascript"></script>
     <script src="app/models/position.js" type="text/javascript"></script>
 
     <script src="app/templates.js" type="text/javascript"></script>
     <script src="app/views/game_place_witget.js" type="text/javascript"></script>
     <script src="app/views/init_page.js" type="text/javascript"></script>
     <script src="app/views/generate_page.js" type="text/javascript"></script>
+    <script src="app/views/game_page.js" type="text/javascript"></script>
 
     <script src="app/router.js" type="text/javascript"></script>
 
@@ -63,6 +65,12 @@
       </div>
     </div>
     <button class="btn btn-primary" type="button" id="btn-start" style="display: none;">Начать игру »</button>
+  </script>
+
+  <script id="game-page-jst" type="text/x-handlebars-template">
+    <h3>Морской бой</h3>
+    <p id="game-message">&nbsp;</p>
+    <button class="btn btn-primary" type="button" id="btn-restart" style="display: none;">Начать игру с заново »</button>
   </script>
 
   <script id="game-place-jst" type="text/x-handlebars-template">

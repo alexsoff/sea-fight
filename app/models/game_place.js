@@ -33,5 +33,27 @@ var GamePlace = Backbone.Model.extend({
       }
     }
     return true;
+  },
+
+  verifyShip: function(celId) {
+    var self = this;
+    var cel = this.cels.get(celId);
+    if(cel.get("findStatus")==="use") {
+      var shipId = cel.get("shipId");
+      var ship = this.ships.get(shipId);
+      var isShip = _.reduce(ship.get("celArray"), function(isS, cId) {
+        return (self.cels.get(cId).get("findStatus")==="use") ? isS : false;
+      }, true);
+      if(isShip) {
+        _.each(ship.get("celArray"), function(cId) {self.cels.get(cId).set({findStatus: "ship"});});
+        ship.set({isKilled: true});
+        if(self.ships.reduce(function(is, sh) { return sh.get("isKilled") ? is : false; }, true)) {
+          self.trigger("victory");
+          return false;
+        }
+      }
+    }
+    return true;
   }
+
 });

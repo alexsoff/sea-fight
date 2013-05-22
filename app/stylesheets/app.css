@@ -13,10 +13,17 @@
   height: 45px;
   padding: 0;
   border: 1px solid #0000CF;
+  vertical-align: center;
+  text-align: center;
+  color: #CF0000;
 }
 
 .game-grid td.ship-normal {
   background-color: #00FF00;
+}
+
+.game-grid td.ship-find {
+  background-color: #FFFF00;
 }
 
 .clicable {

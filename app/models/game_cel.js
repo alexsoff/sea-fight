@@ -7,7 +7,7 @@
 //
 // findStatus - состояние по обнаружению:
 // - "undefined" - о ячейке ничего не известно
-// - "priority" - о ячейке ничего не известно, но вероятность корабля высока и ячейка подлежит первоочередной проверке
+// - "locked" - известно что ячейка пуста, потому как по диагонали корабль
 // - "unuse" - ячейка проверена и пуста
 // - "use" - в ячейке обнаружена часть корабля
 // - "ship" - в ячейке часть корабля, который полностью подбит
@@ -51,7 +51,7 @@ var GameCelCollection = Backbone.Collection.extend({
     var self = this;
     for(var i=0; i<cels.length; i++) {
       tmpCel = this.get(cels[i]);
-      tmpCel.set({useStatus: "use"});
+      tmpCel.set({useStatus: "use", shipId: newShip.get("id")});
       lst = cels[i].split("x");
       x = lst[0]*1;
       y = lst[1]*1;
@@ -64,5 +64,20 @@ var GameCelCollection = Backbone.Collection.extend({
       });
     }
     return true;
+  },
+
+  lockPosition: function(celId) {
+    var self = this;
+    var lst = celId.split("x");
+    var x = lst[0]*1;
+    var y = lst[1]*1;
+    _.each([[1,-1], [1,1], [-1,-1], [-1,1]], function(delta) {
+      var cId = ((x+delta[0])+"x"+(y+delta[1]));
+      var cel = self.get(cId);
+      if( !_.isEmpty(cel) && cel.get("findStatus")==="undefined") {
+        cel.set({findStatus: "locked"});
+      }
+    });
   }
+
 });

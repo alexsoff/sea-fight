@@ -8,6 +8,7 @@ var Ship = Backbone.Model.extend({
     defaults: {
       id: null,
       rotation: 0,
+      isKilled: false,
       celArray: []
     },
     generate: function(num, length) {
